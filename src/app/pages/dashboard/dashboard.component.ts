@@ -23,57 +23,54 @@ interface TableItem {
     styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
-    stats: StatCard[] = [
-        {
+    public stats: StatCard[] = [];
+    public tableData: TableItem[] = [];
+
+    private getStatCard(): StatCard[] {
+        return [{
             title: 'Total Users',
             value: 1240,
             change: '+12%',
             trend: 'up',
-        },
-        {
+        }, {
             title: 'Revenue',
             value: '$8,540',
             change: '+8%',
             trend: 'up',
-        },
-        {
+        }, {
             title: 'Orders',
             value: 320,
             change: '-5%',
             trend: 'down',
-        },
-        {
+        }, {
             title: 'Conversion Rate',
             value: '4.2%',
             change: '+1.1%',
             trend: 'up',
-        },
-    ];
+        }];
+    }
 
-    tableData: TableItem[] = [
-        {
+    private getTableItem(): TableItem[] {
+        return [{
             user: 'John Doe',
             action: 'Created account',
             status: 'Completed',
             date: '2026-03-15',
-        },
-        {
+        }, {
             user: 'Jane Smith',
             action: 'Placed order',
             status: 'Pending',
             date: '2026-03-14',
-        },
-        {
+        }, {
             user: 'Michael Brown',
             action: 'Payment failed',
             status: 'Failed',
             date: '2026-03-13',
-        },
-        {
+        }, {
             user: 'Emily Johnson',
             action: 'Updated profile',
             status: 'Completed',
             date: '2026-03-12',
-        },
-    ];
+        }];
+    }
 }
