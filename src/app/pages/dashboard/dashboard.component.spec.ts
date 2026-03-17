@@ -1,5 +1,5 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { DashboardComponent } from './dashboard.component';
+import { DashboardComponent, StatCard, TableItem } from './dashboard.component';
 import { describe, it, expect, beforeEach } from 'vitest';
 
 describe('DashboardComponent', () => {
@@ -7,7 +7,6 @@ describe('DashboardComponent', () => {
     let component: DashboardComponent;
 
     beforeEach(async () => {
-
         await TestBed.configureTestingModule({
             imports: [DashboardComponent]
         }).compileComponents();
@@ -21,4 +20,18 @@ describe('DashboardComponent', () => {
     it('should create the component', () => {
         expect(component).toBeTruthy();
     });
+
+    describe('populateStatCard', () => {
+        it('should validate returned values', () => {
+            const returnedList: StatCard[] = component.populateStatCard();
+            expect(returnedList.length).toBe(4);
+        });
+    });
+
+    describe('populateTableItem', () => {
+        it('should validate returned values', () => {
+            const returnedList: TableItem[] = component.populateTableItem();
+            expect(returnedList.length).toBe(4);
+        });
+    })
 });

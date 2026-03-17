@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-interface StatCard {
+export interface StatCard {
     title: string;
     value: number | string;
     change: string;
     trend: 'up' | 'down';
 }
 
-interface TableItem {
+export interface TableItem {
     user: string;
     action: string;
     status: 'Completed' | 'Pending' | 'Failed';
@@ -22,11 +22,16 @@ interface TableItem {
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
     public stats: StatCard[] = [];
     public tableData: TableItem[] = [];
 
-    private getStatCard(): StatCard[] {
+    ngOnInit(): void {
+        this.stats = this.populateStatCard();
+        this.tableData = this.populateTableItem();
+    }
+
+    public populateStatCard(): StatCard[] {
         return [{
             title: 'Total Users',
             value: 1240,
@@ -50,7 +55,7 @@ export class DashboardComponent {
         }];
     }
 
-    private getTableItem(): TableItem[] {
+    public populateTableItem(): TableItem[] {
         return [{
             user: 'John Doe',
             action: 'Created account',
